@@ -5,3 +5,12 @@ services:
 script:
   - docker build . -t elimuraya/node
   - docker images elimuraya/node
+
+before_deploy:
+  - docker login -u elimuraya95 -p moraaN@9555
+
+deploy:
+  provider: script
+  script: docker push elimuraya/node
+  on:
+    branch: master
